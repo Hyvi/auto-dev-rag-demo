@@ -75,5 +75,5 @@ if __name__ == '__main__':
                                               api_key=os.environ["OPENAI_API_KEY"],
                                               base_url="https://api.aiproxy.io/v1"
                                           )))
-        vectorstore.delete(delete_all=True)
+        #  vectorstore.delete(delete_all=True)
         vectorstore.add_documents(documents=docs)

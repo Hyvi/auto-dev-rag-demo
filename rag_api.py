@@ -18,7 +18,7 @@ vectorstore = PineconeVectorStore(index_name="cmb-rag-demo",
 
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
-groq = ChatGroq(model_name="llama3-8b-8192")
+#  groq = ChatGroq(model_name="llama3-8b-8192")
 
 openai = ChatOpenAI(api_key=os.environ["OPENAI_API_KEY"],
                     base_url="https://api.aiproxy.io/v1")
@@ -38,7 +38,7 @@ def format_docs(docs):
     return "---\n".join(features)
 
 
-app = FastAPI(title="CMB RAG Demo", description="Demo for CMB RAG", version="0.1.0")
+app = FastAPI(title="Elon RAG Demo", description="Demo for Elon RAG", version="0.1.0", root_path="/rag")
 
 
 class Message(BaseModel):
@@ -86,4 +86,4 @@ def query_domain(query):
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, port=8001)
+    uvicorn.run(app, port=8001, host="0.0.0.0")

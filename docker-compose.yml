@@ -1,0 +1,13 @@
+version: "2"
+services:
+  rag:
+      image: "python:3.10.13-slim"
+      environment:
+        - PINECONE_API_KEY=${PINECONE_API_KEY}
+        - OPENAI_API_KEY=${OPENAI_API_KEY}
+      volumes:
+        - .:/app
+      # ports:
+        # - "80"
+      working_dir: /app
+      command: sh -c "pip3 install -r requirements.txt && python3 ./rag_api.py"
