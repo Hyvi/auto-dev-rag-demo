@@ -15,7 +15,7 @@ vectorstore = PineconeVectorStore(index_name="cmb-rag-demo",
                                       api_key=os.environ["OPENAI_API_KEY"],
                                       base_url="https://api.aiproxy.io/v1"
                                   )))
-
+# explain below code: 
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
 #  groq = ChatGroq(model_name="llama3-8b-8192")
@@ -74,12 +74,17 @@ def query_domain(query):
     问题: {question}
 
     事实:""")
+
+    # explain below code: 
+    # | is one by one chain of functions, 
     rag_chain = (
             {"features": retriever | format_docs, "question": RunnablePassthrough()}
             | custom_rag_prompt
             | openai
             | StrOutputParser()
     )
+    # explain below code in detail, 
+    # chain in detail is explained in the string.py file
     return rag_chain.invoke(query)
 
 
