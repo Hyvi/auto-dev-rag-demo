@@ -11,3 +11,5 @@ services:
         # - "80"
       working_dir: /app
       command: sh -c "pip3 install -r requirements.txt && python3 ./rag_api.py"
+      depends_on:
+        - nginx
