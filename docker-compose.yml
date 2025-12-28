@@ -2,7 +2,7 @@ version: "2"
 services:
   rag:
       image: "python:3.10.13-slim"
-      restart: always
+      # restart: always
       environment:
         - PINECONE_API_KEY=${PINECONE_API_KEY}
         - OPENAI_API_KEY=${OPENAI_API_KEY}
